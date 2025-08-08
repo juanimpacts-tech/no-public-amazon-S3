@@ -1,4 +1,0 @@
-{
-  "resource_type": "aws_s3_bucket",
-  "acl": "public-read"
-}
