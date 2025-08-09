@@ -6,10 +6,10 @@ Public S3 buckets can leak sensitive data to the entire internet with a single m
 
 # What I Learned
 
-How Policy-as-Code works in practice.
-How to write a Rego policy to block risky configurations.
-How to test infrastructure code quickly using Conftest in Codespaces.
-How to map a technical policy directly to compliance controls like NIST AC-6(10) and SC-12.
+1. How Policy-as-Code works in practice.
+2. How to write a Rego policy to block risky configurations.
+3. How to test infrastructure code quickly using Conftest in Codespaces.
+4. How to map a technical policy directly to compliance controls like NIST AC-6(10) and SC-12.
 
 # How I Did It
 Created a GitHub repo and added three files:
