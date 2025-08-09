@@ -1,29 +1,44 @@
 # no-public-amazon-S3
-Built a lightweight security check that prevents teams from accidentally creating public AWS S3 buckets, a common and dangerous cloud misconfiguration. Doing so this using policy as code with Rego, Conftest, and GitHub Codespaces. In doing so (1) Wrote a security policy in code; (2) Evaluated real IaC (Terraform) against it; and (3) Got a policy-as-code enforcement result
 
-# Why I Did This
-Public S3 buckets can leak sensitive data to the entire internet with a single misconfiguration, this functions as a lightweight, automated safeguard that catches this risk before it reaches production.
+**Purpose**
+I built this project to prevent the accidental creation of **public AWS S3 buckets**, one of the most common and dangerous cloud misconfigurations. Using **Policy-as-Code** with **Rego**, **Conftest**, and **GitHub Codespaces**, I wrote and tested a simple policy that blocks any S3 bucket configured with public read access.
 
-# What I Learned
+**Why I Did This**
+Public S3 buckets can leak sensitive data to the entire internet with a single misconfiguration. I wanted a lightweight, automated safeguard that catches this risk **before it reaches production**.
+My goal was to give developers fast feedback, reduce human error, and provide compliance teams with assurance that data storage remains private by default.
 
-1. How Policy-as-Code works in practice.
-2. How to write a Rego policy to block risky configurations.
-3. How to test infrastructure code quickly using Conftest in Codespaces.
-4. How to map a technical policy directly to compliance controls like NIST AC-6(10) and SC-12.
+**What I Learned**
 
-# How I Did It
-1. Created a GitHub repo and added three files:
-2. input.json – sample S3 config with "acl": "public-read".
-3. policy/input.rego – policy that denies public-read buckets.
-4. conftest.toml – test configuration.
-5. Opened the repo in GitHub Codespaces for a no-setup environment.
-6. Tested the policy with conftest test input.json --all-namespaces and saw the violation flagged.
-7. Fixed the misconfiguration by changing "acl": "private" and re-tested to confirm the policy passed.
+* How Policy-as-Code works in practice
+* How to write a **Rego** policy to block risky configurations
+* How to test infrastructure code quickly using **Conftest** in Codespaces
+* How to map a technical policy directly to compliance controls like **NIST AC-6(10)** and **SC-12**
 
-# The Outcome
-I now have:
-1. An automated guardrail preventing public S3 buckets.
-2. A quick feedback loop for developers.
-3. A clear compliance mapping to:
+**How I Did It**
+
+1. **Created a GitHub repo** and added three files:
+
+   * `input.json` – sample S3 config with `"acl": "public-read"`
+   * `policy/input.rego` – policy that denies public-read buckets
+   * `conftest.toml` – test configuration
+2. **Opened the repo in GitHub Codespaces** for a no-setup environment
+3. **Tested the policy** with:
+
+   ```bash
+   conftest test input.json --all-namespaces
+   ```
+
+   ✅ Saw the violation flagged
+4. **Fixed the misconfiguration** by changing `"acl": "private"`
+5. **Re-tested** to confirm the policy passed
+
+**The Outcome**
+
+* An **automated guardrail** preventing public S3 buckets
+* A **quick feedback loop** for developers
+* A clear compliance mapping to:
+
+  * **AC-6(10)** – Automated enforcement of least privilege
+  * **SC-12** – Prevention of unauthorized public access
     i. AC-6(10) – Automated enforcement of least privilege.
     ii. SC-12 – Prevention of unauthorized public access.
