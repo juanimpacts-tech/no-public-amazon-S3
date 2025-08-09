@@ -12,18 +12,18 @@ Public S3 buckets can leak sensitive data to the entire internet with a single m
 4. How to map a technical policy directly to compliance controls like NIST AC-6(10) and SC-12.
 
 # How I Did It
-Created a GitHub repo and added three files:
-input.json – sample S3 config with "acl": "public-read".
-policy/input.rego – policy that denies public-read buckets.
-conftest.toml – test configuration.
-Opened the repo in GitHub Codespaces for a no-setup environment.
-Tested the policy with conftest test input.json --all-namespaces and saw the violation flagged.
-Fixed the misconfiguration by changing "acl": "private" and re-tested to confirm the policy passed.
+1. Created a GitHub repo and added three files:
+2. input.json – sample S3 config with "acl": "public-read".
+3. policy/input.rego – policy that denies public-read buckets.
+4. conftest.toml – test configuration.
+5. Opened the repo in GitHub Codespaces for a no-setup environment.
+6. Tested the policy with conftest test input.json --all-namespaces and saw the violation flagged.
+7. Fixed the misconfiguration by changing "acl": "private" and re-tested to confirm the policy passed.
 
 # The Outcome
 I now have:
-An automated guardrail preventing public S3 buckets.
-A quick feedback loop for developers.
-A clear compliance mapping to:
-AC-6(10) – Automated enforcement of least privilege.
-SC-12 – Prevention of unauthorized public access.
+1. An automated guardrail preventing public S3 buckets.
+2. A quick feedback loop for developers.
+3. A clear compliance mapping to:
+    AC-6(10) – Automated enforcement of least privilege.
+    SC-12 – Prevention of unauthorized public access.
