@@ -25,5 +25,5 @@ I now have:
 1. An automated guardrail preventing public S3 buckets.
 2. A quick feedback loop for developers.
 3. A clear compliance mapping to:
-    AC-6(10) – Automated enforcement of least privilege.
-    SC-12 – Prevention of unauthorized public access.
+    i. AC-6(10) – Automated enforcement of least privilege.
+    ii. SC-12 – Prevention of unauthorized public access.
